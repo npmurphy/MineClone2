@@ -186,7 +186,7 @@ mobs:spawn(spawn_desert)
 
 local pikachu_spawn = table.copy(spawn)
 pikachu_spawn.name = "mobs_mc:pikachu"
-spawn_snow.nodes = mobs_mc.spawn.grassland
+pikachu_spawn.nodes = mobs_mc.spawn.grassland
 pikachu_spawn.active_object_count = 30
 pikachu_spawn.on_spawn = function(self, pos)
 	local texture = "mobs_mc_rabbit_pikachu.png"
