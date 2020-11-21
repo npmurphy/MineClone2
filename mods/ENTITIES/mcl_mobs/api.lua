@@ -2690,6 +2690,8 @@ local do_states = function(self, dtime)
 				end
 			end
 
+		elseif self.attack_type == "thundershock" then
+			lightning.strike(p)
 		elseif self.attack_type == "shoot"
 		or (self.attack_type == "dogshoot" and dogswitch(self, dtime) == 1)
 		or (self.attack_type == "dogshoot" and dist > self.reach and dogswitch(self) == 0) then
