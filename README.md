@@ -2,15 +2,17 @@
 An unofficial Minecraft-like game for Minetest. Forked from MineClone by davedevils.
 Developed by Wuzzy and contributors. Not developed or endorsed by Mojang AB.
 
+*Forked from [the original repo](https://git.minetest.land/Wuzzy/MineClone2/)*.
+
 Version: 0.68.0
 
 ### Gameplay
 You start in a randomly-generated world made entirely of cubes. You can explore
 the world and dig and build almost every block in the world to create new
-structures. You can choose to play in a “survival mode” in which you have to
+structures. You can choose to play in a "survival mode" in which you have to
 fight monsters and hunger for survival and slowly progress through the
 various other aspects of the game, such as mining, farming, building machines, and so on
-Or you can play in “creative mode” in which you can build almost anything instantly.
+Or you can play in "creative mode" in which you can build almost anything instantly.
 
 #### Gameplay summary
 
@@ -28,7 +30,7 @@ Or you can play in “creative mode” in which you can build almost anything in
 ## How to play (quick start)
 ### Getting started
 * **Punch a tree** trunk until it breaks and collect wood
-* Place the **wood into the 2×2 grid** (your “crafting grid” in your inventory menu and craft 4 wood planks
+* Place the **wood into the 2×2 grid** (your "crafting grid" in your inventory menu and craft 4 wood planks
 * Place the 4 wood planks in a 2×2 shape in the crafting grid to **make a crafting table**
 * **Rightclick the crafting table** for a 3×3 crafting grid to craft more complex things
 * Use the **crafting guide** (book icon) to learn all the possible crafting recipes
@@ -79,13 +81,13 @@ are officially supported.
 There is no support for running MineClone 2 in development versions of Minetest.
 
 To install MineClone 2 (if you haven't already), move this directory into the
-“games” directory of your Minetest data directory. Consult the help of
+"games" directory of your Minetest data directory. Consult the help of
 Minetest to learn more.
 
 ## Project description
 The main goal of **MineClone 2** is to be a clone of Minecraft and to be released as free software.
 
-* **Target of development: Minecraft, PC Edition, version 1.11** (later known as “Java Edition”)
+* **Target of development: Minecraft, PC Edition, version 1.11** (later known as "Java Edition")
 * Features of later Minecraft versions might sneak in, but they have a low priority
 * In general, Minecraft is aimed to be cloned as good as Minetest currently permits (no hacks)
 * Cloning the gameplay has highest priority
@@ -97,7 +99,7 @@ The main goal of **MineClone 2** is to be a clone of Minecraft and to be release
 This game is currently in **alpha** stage.
 It is playable, but unfinished, many bugs are to be expected.
 Backwards-compability is *not* guaranteed, updating your world might cause small and
-big bugs (such as “missing node” errors or even crashes).
+big bugs (such as "missing node" errors or even crashes).
 
 The following main features are available:
 
@@ -177,7 +179,7 @@ Technical differences from Minecraft:
 * Different sounds (various sources)
 * Different engine (Minetest)
 
-… and finally, MineClone 2 is free software (“free” as in “freedom”)!
+… and finally, MineClone 2 is free software ("free" as in "freedom")!
 
 ## Reporting bugs
 Please report all bugs and missing Minecraft features here:
