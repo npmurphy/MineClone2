@@ -62,7 +62,7 @@ local rabbit = {
 		if mobs:capture_mob(self, clicker, 0, 50, 80, false, nil) then return end
 	end,
 	do_custom = function(self)
-		-- Easter egg: Change texture if rabbit is named “Toast”
+		-- Easter egg: Change texture if rabbit is named "Toast"
 		if self.nametag == "Toast" and not self._has_toast_texture then
 			self._original_rabbit_texture = self.base_texture
 			self.base_texture = { "mobs_mc_rabbit_toast.png" }
@@ -103,6 +103,64 @@ end
 
 mobs:register_mob("mobs_mc:killer_bunny", killer_bunny)
 
+-- Pikachu 
+--------------------------
+local pikachu_bunny = table.copy(rabbit)
+pikachu_bunny.type = "animal"
+pikachu_bunny.spawn_class = "passive"
+pikachu_bunny.attack_type = "thundershock"
+pikachu_bunny.damage = 8
+pikachu_bunny.passive = false
+-- 8 armor points
+pikachu_bunny.armor = 50
+pikachu_bunny.textures = { "mobs_mc_rabbit_pikachu.png" }
+pikachu_bunny.view_range = 16
+pikachu_bunny.on_rightclick = nil
+pikachu_bunny.run_velocity = 6
+
+pikachu_bunny.follow = mobs_mc.follow.wolf
+pikachu_bunny.on_rightclick = function(self, clicker)
+	-- copy code from wolf (intentionally does NOT use mobs:feed_tame)
+	local tool = clicker:get_wielded_item()
+	local mypikachu, ent
+	if tool:get_name() == mobs_mc.items.apple then
+
+		if not minetest.is_creative_enabled(clicker:get_player_name()) then
+			tool:take_item()
+			clicker:set_wielded_item(tool)
+		end
+		local yaw = self.object:get_yaw()
+		mypikachu = minetest.add_entity(self.object:get_pos(), "mobs_mc:mypikachu")
+		mypikachu:set_yaw(yaw)
+		ent = mypikachu:get_luaentity()
+		ent.owner = clicker:get_player_name()
+		self.object:remove()
+	end
+end
+
+mobs:register_mob("mobs_mc:pikachu", pikachu_bunny)
+
+-- caught pikachu (aka "mypikachu)
+local mypikachu = table.copy(pikachu_bunny)
+mypikachu.can_despawn = false
+mypikachu.passive = true
+mypikachu.hp_min = 20
+mypikachu.hp_max = 20
+mypikachu.owner = ""
+-- TODO: Start sitting by default
+mypikachu.order = "roam"
+mypikachu.owner_loyal = true
+mypikachu.follow_velocity = 3.2 
+-- Automatically teleport mypikachu to owner
+mypikachu.do_custom = mobs_mc.make_owner_teleport_function(12)
+mypikachu.follow = mobs_mc.follow.mypikachu
+mypikachu.attack_animals = nil
+mypikachu.specific_attack = nil
+
+mobs:register_mob("mobs_mc:mypikachu", mypikachu)
+
+--------------------------
+
 -- Mob spawning rules.
 -- Different skins depending on spawn location
 
@@ -125,6 +183,18 @@ spawn_desert.on_spawn = function(self, pos)
 	self.object:set_properties({textures = self.base_texture})
 end
 mobs:spawn(spawn_desert)
+
+local pikachu_spawn = table.copy(spawn)
+pikachu_spawn.name = "mobs_mc:pikachu"
+spawn_snow.nodes = mobs_mc.spawn.grassland
+pikachu_spawn.active_object_count = 30
+pikachu_spawn.on_spawn = function(self, pos)
+	local texture = "mobs_mc_rabbit_pikachu.png"
+	self.base_texture = { "mobs_mc_rabbit_pikachu.png" }
+	self.object:set_properties({textures = self.base_texture})
+end
+mobs:spawn(pikachu_spawn)
+------------------------
 
 local spawn_snow = table.copy(spawn)
 spawn_snow.nodes = mobs_mc.spawn.snow
