@@ -10,3 +10,6 @@ dofile(minetest.get_modpath("mcl_portals").."/portal_nether.lua")
 -- Red nether brick block frame, activated by an eye of ender
 dofile(minetest.get_modpath("mcl_portals").."/portal_end.lua")
 
+dofile(minetest.get_modpath("mcl_portals").."/create_creaper.lua")
+
+
